@@ -12,9 +12,9 @@ services:
             - shinyproxy-net          
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
-        - "./shinyproxy-logs/server:/log"
-        - "./shinyproxy-logs/container:/container-logs"
-        - "./shinyproxy:/opt/shinyproxy"
+        # - /shinyproxy-logs/server:/log
+        # - /shinyproxy-logs/container:/container-logs
+        # - /shinyproxy:/opt/shinyproxy
 
 networks: 
     shinyproxy-net:
