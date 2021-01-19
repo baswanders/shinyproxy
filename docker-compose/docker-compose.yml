@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+
+    shinyproxy:
+        image: wandersnet/shinyproxy
+        container_name: shinyproxy
+        restart: on-failure
+        ports:
+            - "80:8080"
+        networks:
+            - shinyproxy-net          
+        volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - "./shinyproxy-logs/server:/log"
+        - "./shinyproxy-logs/container:/container-logs"
+        - "./shinyproxy:/opt/shinyproxy"
+
+networks: 
+    shinyproxy-net:
+        name: shinyproxy-net            
