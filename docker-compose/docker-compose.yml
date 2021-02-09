@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
 
@@ -12,9 +12,15 @@ services:
             - shinyproxy-net          
         volumes:
         - /var/run/docker.sock:/var/run/docker.sock
+        # add volume "shinyvolume" in azure webapp congiguration/path mappings
+        # - shinyvolume:/var/run/docker.sock:/var/run/docker.sock
         # - /shinyproxy-logs/server:/log
         # - /shinyproxy-logs/container:/container-logs
         # - /shinyproxy:/opt/shinyproxy
+        depends_on:
+            - shinydemo
+    shinydemo:
+        image: openanalytics/shinyproxy-demo
 
 networks: 
     shinyproxy-net:

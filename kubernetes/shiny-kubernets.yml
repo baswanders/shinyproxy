@@ -15,6 +15,12 @@ spec:
       containers:
       - name: shinyproxy
         image: wandersnet/shinyproxy
-        # imagePullPolicy: Never
+        env:
+        - name: GET_HOSTS_FROM
+          value: dns
         ports:
         - containerPort: 80
+      - name: kube-proxy-sidecar
+        image: wandersnet/kube-proxy-sidecar
+        ports:
+        - containerPort: 8001
